@@ -46,12 +46,12 @@ gulp.task('uglifyhtml', () => {
         .pipe(gulp.dest('dist/'));
 });
 
-//4. 压缩css文件 - 引入插件包
-gulp.task('uglifycss', () => {
-    return gulp.src('src/css/*.css')
-        .pipe(css()) //执行css插件包
-        .pipe(gulp.dest('dist/css'));
-});
+// //4. 压缩css文件 - 引入插件包
+// gulp.task('uglifycss', () => {
+//     return gulp.src('src/css/*.css')
+//         .pipe(css()) //执行css插件包
+//         .pipe(gulp.dest('dist/css'));
+// });
 
 //5.sass编译成css - 引入插件包
 gulp.task('compilesass', () => {
@@ -61,7 +61,7 @@ gulp.task('compilesass', () => {
             outputStyle: 'compressed' //压缩
         }))
         .pipe(plugins.sourcemaps.write('.')) //通过sourcemaps,生成.map文件
-        .pipe(gulp.dest('dist/css/'));
+        .pipe(gulp.dest('dist/css'));
 });
 
 
