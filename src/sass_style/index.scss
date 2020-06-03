@@ -5,14 +5,13 @@
 }
 
 a {
-    text-emphasis: none;
+    text-decoration: none;
 }
 
 li {
     list-style: none;
 }
 
-$width:1200px;
 body {
     #common-nav {
         width: 30px;
@@ -32,13 +31,15 @@ body {
             cursor: pointer;
             letter-spacing: 2px;
         }
-        li.active {
+        li:hover {
             background: rgb(228, 85, 109);
         }
         li:first-of-type {
             height: 40px;
         }
         li:last-of-type {
+            z-index: 999;
+            background: #202020;
             border-top: 1px white solid;
             position: absolute;
             bottom: 0;
@@ -186,6 +187,183 @@ body {
                             float: left;
                         }
                     }
+                }
+            }
+        }
+    }
+    .body_wrap {
+        width: 100%;
+        margin-top: 20PX;
+        .header {
+            width: 1200px;
+            height: 40px;
+            margin: 0 auto;
+            .header-title {
+                float: left;
+                width: 250px;
+                height: 100%;
+                border-radius: 5px 5px 0 0;
+                background: #ff4466;
+                line-height: 40px;
+                float: left;
+                .icon-menu2 {
+                    font-size: 18px;
+                    margin-left: 30px;
+                    color: white;
+                }
+                a {
+                    font-size: 18px;
+                    margin-left: 10px;
+                    color: white;
+                }
+            }
+            div {
+                width: 120px;
+                height: 100%;
+                float: left;
+                p {
+                    width: 100px;
+                    height: 25px;
+                    font-size: 18px;
+                    margin-top: 10px;
+                    margin-left: 30px;
+                    border-right: 1px solid #f0f0f0;
+                }
+            }
+        }
+        .goodsbox {
+            width: 100%;
+            border-top: 2px solid #ff4466;
+            background: #cceae2;
+            .goodsitem {
+                margin: 0 auto;
+                width: 1200px;
+                height: 400px;
+                position: relative;
+                .items {
+                    width: 250px;
+                    height: 400px;
+                    background: #f1f9f7;
+                    position: absolute;
+                    left: 0;
+                    z-index: 2;
+                    ul {
+                        li {
+                            box-sizing: border-box;
+                            height: 34px;
+                            width: 250px;
+                            font-size: 12px;
+                            line-height: 25px;
+                            border-left: 2px solid #f1f9f7;
+                            cursor: pointer;
+                            p {
+                                float: left;
+                                line-height: 34px;
+                                margin: 0 6px;
+                                .icon-xinxi {
+                                    font-size: 14px;
+                                    color: #ff4466;
+                                }
+                            }
+                            .bold {
+                                margin-left: 20px;
+                                font-weight: bold;
+                                font-size: 15px;
+                            }
+                            .colored {
+                                color: #ff4466;
+                            }
+                        }
+                        .first {
+                            margin-top: 5px;
+                        }
+                        li:hover {
+                            background: white;
+                            border-left: 2px solid #ff4466;
+                        }
+                    }
+                }
+                .bgpic {
+                    position: absolute;
+                    left: 150px;
+                    width: 1000px;
+                    height: 400px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .infos {
+                    z-index: 2;
+                    width: 160px;
+                    height: 400px;
+                    position: absolute;
+                    right: 0;
+                    .info {
+                        width: 160px;
+                        height: 185px;
+                        background: #f1f9f7;
+                        margin-top: 10px;
+                        text-align: center;
+                    }
+                    .info1 {
+                        p:last-of-type {
+                            width: 70px;
+                            height: 20px;
+                            font-size: 13px;
+                            line-height: 20px;
+                            color: red;
+                            border: 1px solid red;
+                            margin: 15px 42px;
+                        }
+                    }
+                    .info2 {
+                        p:first-of-type {
+                            line-height: 30px;
+                        }
+                        img {
+                            width: 130px;
+                            height: 150px;
+                        }
+                    }
+                }
+            }
+        }
+        .outerbox {
+            width: 1200px;
+            height: 290px;
+            margin: 20px auto 0;
+            .countdown {
+                width: 230px;
+                height: 100%;
+                float: left;
+                position: relative;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                div {
+                    position: absolute;
+                    top: 227px;
+                    z-index: 3;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 5px;
+                    background: black;
+                    color: white;
+                    font-size: 25px;
+                    font-weight: bold;
+                    text-align: center;
+                    line-height: 40px;
+                }
+                .hour {
+                    left: 42px;
+                }
+                .min {
+                    left: 100px;
+                }
+                .second {
+                    left: 155px;
                 }
             }
         }

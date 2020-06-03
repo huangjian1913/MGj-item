@@ -22,4 +22,4 @@ $ajax({
         </div>`;
     }
     goods_content.innerHTML = strhtml;
-})
+});

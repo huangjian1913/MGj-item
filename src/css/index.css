@@ -4,7 +4,7 @@
 }
 
 a {
-  text-emphasis: none;
+  text-decoration: none;
 }
 
 li {
@@ -30,13 +30,15 @@ body #common-nav li {
   cursor: pointer;
   letter-spacing: 2px;
 }
-body #common-nav li.active {
+body #common-nav li:hover {
   background: #e4556d;
 }
 body #common-nav li:first-of-type {
   height: 40px;
 }
 body #common-nav li:last-of-type {
+  z-index: 999;
+  background: #202020;
   border-top: 1px white solid;
   position: absolute;
   bottom: 0;
@@ -184,6 +186,177 @@ body .header .header-wrap .search-nav .search-content .login p {
   margin-left: 5px;
   font-size: 15px;
   float: left;
+}
+body .body_wrap {
+  width: 100%;
+  margin-top: 20PX;
+}
+body .body_wrap .header {
+  width: 1200px;
+  height: 40px;
+  margin: 0 auto;
+}
+body .body_wrap .header .header-title {
+  float: left;
+  width: 250px;
+  height: 100%;
+  border-radius: 5px 5px 0 0;
+  background: #ff4466;
+  line-height: 40px;
+  float: left;
+}
+body .body_wrap .header .header-title .icon-menu2 {
+  font-size: 18px;
+  margin-left: 30px;
+  color: white;
+}
+body .body_wrap .header .header-title a {
+  font-size: 18px;
+  margin-left: 10px;
+  color: white;
+}
+body .body_wrap .header div {
+  width: 120px;
+  height: 100%;
+  float: left;
+}
+body .body_wrap .header div p {
+  width: 100px;
+  height: 25px;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-left: 30px;
+  border-right: 1px solid #f0f0f0;
+}
+body .body_wrap .goodsbox {
+  width: 100%;
+  border-top: 2px solid #ff4466;
+  background: #cceae2;
+}
+body .body_wrap .goodsbox .goodsitem {
+  margin: 0 auto;
+  width: 1200px;
+  height: 400px;
+  position: relative;
+}
+body .body_wrap .goodsbox .goodsitem .items {
+  width: 250px;
+  height: 400px;
+  background: #f1f9f7;
+  position: absolute;
+  left: 0;
+  z-index: 2;
+}
+body .body_wrap .goodsbox .goodsitem .items ul li {
+  box-sizing: border-box;
+  height: 34px;
+  width: 250px;
+  font-size: 12px;
+  line-height: 25px;
+  border-left: 2px solid #f1f9f7;
+  cursor: pointer;
+}
+body .body_wrap .goodsbox .goodsitem .items ul li p {
+  float: left;
+  line-height: 34px;
+  margin: 0 6px;
+}
+body .body_wrap .goodsbox .goodsitem .items ul li p .icon-xinxi {
+  font-size: 14px;
+  color: #ff4466;
+}
+body .body_wrap .goodsbox .goodsitem .items ul li .bold {
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 15px;
+}
+body .body_wrap .goodsbox .goodsitem .items ul li .colored {
+  color: #ff4466;
+}
+body .body_wrap .goodsbox .goodsitem .items ul .first {
+  margin-top: 5px;
+}
+body .body_wrap .goodsbox .goodsitem .items ul li:hover {
+  background: white;
+  border-left: 2px solid #ff4466;
+}
+body .body_wrap .goodsbox .goodsitem .bgpic {
+  position: absolute;
+  left: 150px;
+  width: 1000px;
+  height: 400px;
+}
+body .body_wrap .goodsbox .goodsitem .bgpic img {
+  width: 100%;
+  height: 100%;
+}
+body .body_wrap .goodsbox .goodsitem .infos {
+  z-index: 2;
+  width: 160px;
+  height: 400px;
+  position: absolute;
+  right: 0;
+}
+body .body_wrap .goodsbox .goodsitem .infos .info {
+  width: 160px;
+  height: 185px;
+  background: #f1f9f7;
+  margin-top: 10px;
+  text-align: center;
+}
+body .body_wrap .goodsbox .goodsitem .infos .info1 p:last-of-type {
+  width: 70px;
+  height: 20px;
+  font-size: 13px;
+  line-height: 20px;
+  color: red;
+  border: 1px solid red;
+  margin: 15px 42px;
+}
+body .body_wrap .goodsbox .goodsitem .infos .info2 p:first-of-type {
+  line-height: 30px;
+}
+body .body_wrap .goodsbox .goodsitem .infos .info2 img {
+  width: 130px;
+  height: 150px;
+}
+body .body_wrap .outerbox {
+  width: 1200px;
+  height: 290px;
+  margin: 20px auto 0;
+}
+body .body_wrap .outerbox .countdown {
+  width: 230px;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+body .body_wrap .outerbox .countdown img {
+  width: 100%;
+  height: 100%;
+}
+body .body_wrap .outerbox .countdown div {
+  position: absolute;
+  top: 227px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background: black;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 40px;
+}
+body .body_wrap .outerbox .countdown .hour {
+  left: 42px;
+}
+body .body_wrap .outerbox .countdown .min {
+  left: 100px;
+}
+body .body_wrap .outerbox .countdown .second {
+  left: 155px;
 }
 
 /*# sourceMappingURL=index.css.map */

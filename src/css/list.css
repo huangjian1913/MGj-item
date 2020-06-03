@@ -35,7 +35,7 @@ li {
     letter-spacing: 2px;
 }
 
-#common-nav li.active {
+#common-nav li:hover {
     background: rgb(228, 85, 109);
 }
 
