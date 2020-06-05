@@ -7,7 +7,7 @@ $ajax({
     let strhtml = '';
     for (let value of arr) {
         strhtml += `  
-        <div class="goods">
+        <a href="detail.html" class="goods">
             <div class="box"><img src="${value.url}" alt="">
             </div>
             <p>${value.title}</p>
@@ -19,7 +19,7 @@ $ajax({
                 <span class="iconfont icon-shoucang"></span>
                 <span>${value.sailnumber}</span>
             </div>    
-        </div>`;
+        </a>`;
     }
     goods_content.innerHTML = strhtml;
 });

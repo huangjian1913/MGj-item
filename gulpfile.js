@@ -94,5 +94,5 @@ gulp.task('uglifyimg', () => {
 
 
 gulp.task('default', () => {
-    watch(['src/*.html', 'src/sass/*.scss', 'src/script/*.js'], gulp.parallel('uglifyhtml', 'compilesass', 'uglifyjs'));
+    watch(['src/*.html', 'src/sass/*.scss'], gulp.parallel('uglifyhtml', 'compilesass'));
 });
