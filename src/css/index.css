@@ -188,6 +188,7 @@ body {
   height: 30px;
 }
 .header .header-wrap .search-nav .search-content .login p {
+  color: black;
   padding-top: 12px;
   margin-left: 5px;
   font-size: 15px;

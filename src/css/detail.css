@@ -32,6 +32,10 @@ li {
   letter-spacing: 2px;
 }
 
+#common-nav li a {
+  color: white;
+}
+
 #common-nav li:hover {
   background: #e4556d;
 }
@@ -138,6 +142,10 @@ li {
   margin-left: 90px;
 }
 
+.header-wrap .search-nav ul li a {
+  color: black;
+}
+
 .header-wrap .search-content {
   height: 44px;
   margin-top: 30px;
@@ -222,7 +230,7 @@ li {
   height: 150px;
 }
 .storepic .bigpic {
-  width: 1536px;
+  width: 1400px;
   height: 121px;
   margin: 0 auto;
 }

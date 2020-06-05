@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    width: 100%;
+    .header_content {
+        width: 1200px;
+        padding: 10px 0;
+        margin: 0 auto;
+        overflow: hidden;
+        .logo {
+            float: left;
+            width: 130px;
+            height: 100px;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        p {
+            margin: 38px 20px 10px;
+            float: left;
+            padding: 5px 50px;
+            font-size: 13px;
+            border: 1px solid #ffc0cc;
+            background-color: #ffefef;
+            color: #666;
+        }
+    }
+}
+
+.login_wrap {
+    width: 100%;
+    .big_bgbox {
+        width: 1518px;
+        height: 600px;
+        background-image: url(https://s17.mogucdn.com/p2/170105/upload_541i9di2b3icf9j13f24e0bg7b1i6_1920x600.png);
+        margin: 0 auto;
+        position: relative;
+        .login_box {
+            position: absolute;
+            top: 50px;
+            right: 150px;
+            width: 400px;
+            .logintab {
+                width: 100%;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 10px 10px 0 0;
+                .tabsbox {
+                    width: 100%;
+                    height: 60px;
+                    border-radius: 10px 10px 0 0;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    position: relative;
+                    .tabs {
+                        cursor: pointer;
+                        height: 25px;
+                        font-size: 17px;
+                        font-weight: bold;
+                        line-height: 25px;
+                    }
+                    .tabs.active {
+                        border-bottom: 3px solid red;
+                    }
+                }
+                .items {
+                    position: absolute;
+                    top: 60px;
+                    width: 100%;
+                }
+                .items1 {
+                    background: rgba(255, 255, 255, 0.8);
+                    border-radius: 10px;
+                    height: 340px;
+                    border-radius: 0 0 10px 10px;
+                    display: flex;
+                    // display: none;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    span {
+                        font-size: 15px;
+                        color: grey;
+                    }
+                    .saoyisao {
+                        width: 180px;
+                        height: 180px;
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    p {
+                        cursor: pointer;
+                        width: 180px;
+                        height: 40px;
+                        border-radius: 20px;
+                        border: 1px solid #fe4460;
+                        font-size: 18px;
+                        text-align: center;
+                        line-height: 40px;
+                        color: #fe4460;
+                    }
+                }
+                .items2 {
+                    display: none;
+                    form {
+                        background: rgba(255, 255, 255, 0.8);
+                        border-radius: 10px;
+                        height: 300px;
+                        border-radius: 0 0 10px 10px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        input {
+                            margin-bottom: 15px;
+                            width: 310px;
+                            height: 44px;
+                            border-radius: 22px;
+                            padding: 0 18px;
+                            border: 1px solid #CFCFCF;
+                            outline: none;
+                            // box-sizing: border-box;
+                        }
+                        input:first-of-type {
+                            margin-top: 30px;
+                        }
+                        input:last-of-type {
+                            background: #fe4561;
+                        }
+                    }
+                }
+            }
+            .social {
+                position: absolute;
+                top: 410px;
+                // top: 370px;
+                width: 100%;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.7);
+                border-radius: 10px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                p {
+                    margin-left: 20px;
+                    font-size: 13px;
+                    cursor: pointer;
+                    .icon-weixin {
+                        color: #2ac314;
+                        font-size: 18px;
+                    }
+                    .icon-qq {
+                        color: #2eace3;
+                        font-size: 18px;
+                    }
+                }
+                a {
+                    margin-left: 20px;
+                    color: black;
+                    font-size: 13px;
+                    text-decoration: none;
+                    span {
+                        font-size: 18px;
+                        color: #fe4460;
+                    }
+                }
+                a:hover {
+                    color: #fe4460;
+                }
+            }
+        }
+    }
+}
+
+.footer {
+    width: 100%;
+    margin-top: 80px;
+    .contentbox {
+        width: 1200px;
+        margin: 0 auto;
+        .items02 {
+            width: 100%;
+            margin-left: 150px;
+            li {
+                color: #666;
+                height: 15px;
+                float: left;
+                padding: 0 20px;
+                border-right: 1px solid #666;
+                font-size: 13px;
+                // line-height: 50px;
+                margin-bottom: 30px;
+            }
+            li:hover {
+                color: orange;
+            }
+            li:last-of-type {
+                border-right: none;
+                ;
+            }
+        }
+        p {
+            color: #666;
+            margin: 10px 0;
+            font-size: 13px;
+            margin: 15px 0;
+            text-align: center;
+        }
+    }
+}
