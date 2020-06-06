@@ -91,12 +91,13 @@ body {
 }
 .header .header-nav .header-nav-wrap .header-nav-content .header-abouts-box {
   position: absolute;
-  top: 30px;
+  top: 25px;
   right: -159px;
   width: 960px;
   height: 500px;
-  background: yellow;
+  background: orange;
   display: none;
+  z-index: 999;
 }
 .header .header-wrap {
   width: 1200px;
@@ -117,12 +118,13 @@ body {
 }
 .header .header-wrap .mulu .mulu-list {
   position: absolute;
-  top: 80px;
+  top: 59px;
   left: -230px;
-  width: 100px;
+  width: 1000px;
   height: 300px;
   background: lightgoldenrodyellow;
   display: none;
+  z-index: 999;
 }
 .header .header-wrap .search-nav {
   float: left;
@@ -136,6 +138,7 @@ body {
 .header .header-wrap .search-nav .search-content .search {
   float: left;
   background: #f7f7f7;
+  position: relative;
 }
 .header .header-wrap .search-nav .search-content .search form {
   margin-left: 20px;
@@ -161,6 +164,23 @@ body {
   margin-left: 10px;
   line-height: 44px;
   color: white;
+}
+.header .header-wrap .search-nav .search-content .search .search_box {
+  width: 470px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #dbdbdb;
+  position: absolute;
+  top: 43px;
+  z-index: 998;
+}
+.header .header-wrap .search-nav .search-content .search .search_box > li {
+  font-size: 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.header .header-wrap .search-nav .search-content .search .search_box > li a {
+  color: black;
 }
 .header .header-wrap .search-nav .search-content ul {
   float: left;
@@ -375,30 +395,31 @@ body {
 }
 .outerbox .bannerbox ul {
   position: absolute;
+  top: 0;
   left: 0;
-  width: 1940px;
+  width: 970px;
   height: 290px;
   background: white;
 }
 .outerbox .bannerbox ul li {
   float: left;
-  width: 192px;
+  width: 210px;
   height: 270px;
   background: red;
-  margin: 10px 25px;
+  margin: 10px 15px;
   position: relative;
 }
 .outerbox .bannerbox ul li .pic {
-  width: 192px;
-  height: 192px;
+  width: 100%;
+  height: 210px;
   background: rebeccapurple;
 }
 .outerbox .bannerbox ul li .pic img {
-  width: 192px;
-  height: 192px;
+  width: 100%;
+  height: 100%;
 }
 .outerbox .bannerbox ul li p {
-  margin: 10px 0;
+  margin: 4px 0;
   font-size: 15px;
   width: 180px;
   white-space: nowrap;
@@ -418,6 +439,12 @@ body {
   bottom: 10px;
   text-decoration: line-through;
   color: grey;
+}
+.outerbox .bannerbox ul:nth-of-type(1) {
+  opacity: 1;
+}
+.outerbox .bannerbox ul:nth-of-type(2) {
+  opacity: 0;
 }
 
 .go_pic {
@@ -486,7 +513,7 @@ body {
 }
 .girl_close .rightbox {
   float: left;
-  width: 960px;
+  width: 970px;
   height: 630px;
 }
 .girl_close .rightbox .bannerpic {
@@ -495,18 +522,40 @@ body {
   position: relative;
   overflow: hidden;
 }
+.girl_close .rightbox .bannerpic > p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 55px;
+  background: black;
+  opacity: 0.7;
+  color: white;
+  font-size: 40px;
+  line-height: 50px;
+  text-align: center;
+  display: none;
+  cursor: pointer;
+}
+.girl_close .rightbox .bannerpic > p:nth-last-child(1) {
+  top: 170px;
+  left: 918px;
+}
+.girl_close .rightbox .bannerpic > p:nth-last-child(2) {
+  top: 170px;
+  left: 10px;
+}
 .girl_close .rightbox .bannerpic ul {
   position: absolute;
   left: 0;
-  width: 1940px;
   height: 410px;
-  background: white;
+  background: #f1f0f0;
 }
 .girl_close .rightbox .bannerpic ul li {
   float: left;
   width: 230px;
   height: 410px;
-  background: red;
+  background: white;
   margin: 0 6px;
 }
 .girl_close .rightbox .bannerpic ul li .pic {
@@ -529,7 +578,7 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-indent: 20px;
+  padding-left: 20px;
 }
 .girl_close .rightbox .bannerpic ul li .span1 {
   font-size: 22px;

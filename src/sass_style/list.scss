@@ -336,6 +336,28 @@ li {
     float: left;
     cursor: pointer;
     display: block;
+    position: relative;
+}
+
+.body_wrap .goods_content .goods p:last-of-type {
+    width: 210px;
+    height: 25px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 25px;
+    color: white;
+    position: absolute;
+    top: 275px;
+    background: rgba(228, 85, 109, 0.8);
+    display: none;
+}
+
+.body_wrap .goods_content .goods:hover {
+    border: 1px solid #ff4466
+}
+
+.body_wrap .goods_content .goods:hover p:last-of-type {
+    display: block;
 }
 
 .body_wrap .goods_content .goods:nth-of-type(5n) {

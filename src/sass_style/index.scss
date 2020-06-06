@@ -88,12 +88,13 @@ body {
                 }
                 .header-abouts-box {
                     position: absolute;
-                    top: 30px;
+                    top: 25px;
                     right: -159px;
                     width: 960px;
                     height: 500px;
-                    background: yellow;
+                    background: orange;
                     display: none;
+                    z-index: 999;
                 }
             }
         }
@@ -117,12 +118,13 @@ body {
             cursor: pointer;
             .mulu-list {
                 position: absolute;
-                top: 80px;
+                top: 59px;
                 left: -230px;
-                width: 100px;
+                width: 1000px;
                 height: 300px;
                 background: lightgoldenrodyellow;
                 display: none;
+                z-index: 999;
             }
         }
         .search-nav {
@@ -135,6 +137,7 @@ body {
                 .search {
                     float: left;
                     background: #f7f7f7;
+                    position: relative;
                     form {
                         margin-left: 20px;
                         input {
@@ -157,6 +160,24 @@ body {
                                 margin-left: 10px;
                                 line-height: 44px;
                                 color: white;
+                            }
+                        }
+                    }
+                    .search_box {
+                        width: 470px;
+                        box-sizing: border-box;
+                        // height: 300px;
+                        background: white;
+                        border: 1px solid rgb(219, 219, 219);
+                        position: absolute;
+                        top: 43px;
+                        z-index: 998;
+                        >li {
+                            font-size: 15px;
+                            cursor: pointer;
+                            padding: 5px 10px;
+                            a {
+                                color: black;
                             }
                         }
                     }
@@ -382,28 +403,29 @@ body {
         overflow: hidden;
         ul {
             position: absolute;
+            top: 0;
             left: 0;
-            width: 1940px;
+            width: 970px;
             height: 290px;
             background: white;
             li {
                 float: left;
-                width: 192px;
+                width: 210px;
                 height: 270px;
                 background: red;
-                margin: 10px 25px;
+                margin: 10px 15px;
                 position: relative;
                 .pic {
-                    width: 192px;
-                    height: 192px;
+                    width: 100%;
+                    height: 210px;
                     background: rebeccapurple;
                     img {
-                        width: 192px;
-                        height: 192px;
+                        width: 100%;
+                        height: 100%;
                     }
                 }
                 p {
-                    margin: 10px 0;
+                    margin: 4px 0;
                     font-size: 15px;
                     width: 180px;
                     white-space: nowrap;
@@ -425,6 +447,12 @@ body {
                     color: grey;
                 }
             }
+        }
+        ul:nth-of-type(1) {
+            opacity: 1;
+        }
+        ul:nth-of-type(2) {
+            opacity: 0;
         }
     }
 }
@@ -494,24 +522,47 @@ body {
     }
     .rightbox {
         float: left;
-        width: 960px;
+        width: 970px;
         height: 630px;
         .bannerpic {
             width: 970px;
             height: 410px;
             position: relative;
             overflow: hidden;
+            >p {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 40px;
+                height: 55px;
+                background: black;
+                opacity: 0.7;
+                color: white;
+                font-size: 40px;
+                line-height: 50px;
+                text-align: center;
+                display: none;
+                cursor: pointer;
+            }
+            >p:nth-last-child(1) {
+                top: 170px;
+                left: 918px;
+            }
+            >p:nth-last-child(2) {
+                top: 170px;
+                left: 10px;
+            }
             ul {
                 position: absolute;
                 left: 0;
-                width: 1940px;
+                // width: 2910px;
                 height: 410px;
-                background: white;
+                background: rgb(241, 240, 240);
                 li {
                     float: left;
                     width: 230px;
                     height: 410px;
-                    background: red;
+                    background: white;
                     margin: 0 6px;
                     .pic {
                         width: 200px;
@@ -533,7 +584,8 @@ body {
                         -webkit-box-orient: vertical;
                         overflow: hidden;
                         text-overflow: ellipsis;
-                        text-indent: 20px;
+                        // text-indent: 20px;
+                        padding-left: 20px;
                     }
                     .span1 {
                         font-size: 22px;
