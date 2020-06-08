@@ -490,7 +490,7 @@ li {
 .detailpart .detailbox .detail_mid .color .color_select p.xuxian {
   border-style: dashed;
 }
-.detailpart .detailbox .detail_mid .color .color_select p:not(.xuxian):hover {
+.detailpart .detailbox .detail_mid .color .color_select p:not(.xuxian).active {
   border: 2px solid #999;
 }
 .detailpart .detailbox .detail_mid .size {
@@ -524,7 +524,7 @@ li {
 .detailpart .detailbox .detail_mid .size .size_select p.xuxian {
   border-style: dashed;
 }
-.detailpart .detailbox .detail_mid .size .size_select p:not(.xuxian):hover {
+.detailpart .detailbox .detail_mid .size .size_select p:not(.xuxian).active {
   border: 2px solid #999;
   padding: 0 9px;
 }

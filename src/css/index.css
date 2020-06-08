@@ -405,14 +405,12 @@ body {
   float: left;
   width: 210px;
   height: 270px;
-  background: red;
   margin: 10px 15px;
   position: relative;
 }
 .outerbox .bannerbox ul li .pic {
   width: 100%;
   height: 210px;
-  background: rebeccapurple;
 }
 .outerbox .bannerbox ul li .pic img {
   width: 100%;
@@ -743,6 +741,7 @@ body {
   left: 0;
   width: 3780px;
   height: 560;
+  z-index: 5;
 }
 .girl_shoebag .center_goods ul li,
 .boy_goods .center_goods ul li,
@@ -765,7 +764,6 @@ body {
   margin-bottom: -10px;
   width: 185px;
   height: 230px;
-  background: yellow;
 }
 .girl_shoebag .center_goods ul li a img,
 .boy_goods .center_goods ul li a img,
@@ -805,6 +803,7 @@ body {
   bottom: 10px;
   width: 110px;
   height: 20px;
+  z-index: 999;
 }
 .girl_shoebag .center_goods .btnsbox p,
 .boy_goods .center_goods .btnsbox p,
@@ -819,11 +818,11 @@ body {
   margin: 5px 5px;
   cursor: pointer;
 }
-.girl_shoebag .center_goods .btnsbox p:hover,
-.boy_goods .center_goods .btnsbox p:hover,
-.girl_underwear .center_goods .btnsbox p:hover,
-.home_textiles .center_goods .btnsbox p:hover,
-.child_goods .center_goods .btnsbox p:hover {
+.girl_shoebag .center_goods .btnsbox p.active,
+.boy_goods .center_goods .btnsbox p.active,
+.girl_underwear .center_goods .btnsbox p.active,
+.home_textiles .center_goods .btnsbox p.active,
+.child_goods .center_goods .btnsbox p.active {
   background: black;
 }
 .girl_shoebag .right_goods,
@@ -877,7 +876,6 @@ body {
   top: 64px;
   width: 310px;
   height: 470px;
-  background: yellowgreen;
   display: none;
 }
 .girl_shoebag .right_goods .hot_goods a,
@@ -889,7 +887,7 @@ body {
   margin: 10px 10px;
   width: 280px;
   height: 100px;
-  background: yellow;
+  color: black;
 }
 .girl_shoebag .right_goods .hot_goods a img,
 .boy_goods .right_goods .hot_goods a img,
