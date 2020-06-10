@@ -12,9 +12,98 @@
 }()
 
 ! function() {
+    let id = location.search.substring(1).split('=')[1];
+    const bigpics = document.querySelectorAll('.detailpart .detail_left .bigpicbox img');
+    const smallpics = document.querySelectorAll('.detailpart .detail_left .smallbox img');
+    // const colors = document.querySelectorAll('.detailpart .color .color_select p');
+    // const sizes = document.querySelectorAll('.detailpart .size .size_select p');
+    const number = document.querySelector('.detailpart .numbox span');
+    const cartbtn = document.querySelector('.detailpart .detail_mid .addcart .add');
+    const storepic = document.querySelector('.storepic .bigpic img');
+    const title = document.querySelector('.detailpart .detail_mid p');
+    const message = document.querySelectorAll('.detailpart .detail_mid .message p');
+    const oldprice = message[0].querySelector('span');
+    const price = message[1].querySelector('span');
+    const sailnum = message[2].querySelectorAll('span')[1];
+
+    $ajax({
+        url: 'http://10.31.162.38/Mogujie/php/detail.php',
+        data: {
+            sid: id,
+        }
+    }).then(function(data) {
+        let obj = JSON.parse(data);
+        bigpics[0].src = obj.url1;
+        smallpics[0].src = obj.url1;
+        bigpics[1].src = obj.url2;
+        smallpics[1].src = obj.url2;
+        bigpics[2].src = obj.url3;
+        smallpics[2].src = obj.url3;
+        bigpics[3].src = obj.url4;
+        smallpics[3].src = obj.url4;
+        bigpics[4].src = obj.url;
+        smallpics[4].src = obj.url;
+        title.innerHTML = obj.title;
+        oldprice.innerHTML = '¥' + obj.oldprice;
+        price.innerHTML = '¥' + obj.price;
+        sailnum.innerHTML = obj.sailnumber;
+        storepic.src = obj.piclisturl;
+    })
+    let arrsid = [];
+    let arrnum = [];
+    let arrcolor = [];
+    let arrsize = [];
+
+    function cookievalue() {
+        if (cookie.get('cookiesid') && cookie.get('cookienum') && cookie.get('cookiecolor') && cookie.get('cookiesize')) {
+            arrsid = cookie.get('cookiesid').split(','); //获取的cookie变成数组
+            arrnum = cookie.get('cookienum').split(',');
+            arrcolor = cookie.get('cookiecolor').split(',');
+            arrsize = cookie.get('cookiesize').split(',');
+        } else {
+            arrsid = [];
+            arrnum = [];
+            arrcolor = [];
+            arrsize = [];
+        }
+    }
+    //通过判断确认是否是第一次加入购物车
+    cartbtn.addEventListener('click', function() {
+        let color = document.querySelector('.detailpart .color .color_select .active');
+        let size = document.querySelector('.detailpart .size .size_select .active');
+
+        if (color && size) {
+            cookievalue();
+
+            //获取当前商品的id
+            if (arrsid.indexOf(id) !== -1 && arrcolor[arrsid.indexOf(id)] === color.innerHTML && arrsize[arrsid.indexOf(id)] === size.innerHTML) { //存在，不是第一次
+                //arrnum[arrsid.indexOf(id)] //通过id找对应的数量
+                //存在的数量+当前新加的数量
+                let num = parseInt(arrnum[arrsid.indexOf(id)]) + parseInt(number.innerHTML);
+                arrnum[arrsid.indexOf(id)] = num;
+                cookie.set('cookienum', arrnum, 10);
+
+            } else { //第一次添加商品
+                arrsid.push(id);
+                let num = parseInt(number.innerHTML);
+                arrnum.push(num);
+                arrcolor.push(color.innerHTML);
+                arrsize.push(size.innerHTML);
+                cookie.set('cookiesid', arrsid, 10);
+                cookie.set('cookienum', arrnum, 10);
+                cookie.set('cookiecolor', arrcolor, 10);
+                cookie.set('cookiesize', arrsize, 10);
+            }
+            alert('商品已经加入购物车了');
+        }
+    })
+}()
+
+! function() {
     const $cartbtn = $('.detailpart .detail_mid .addcart .add');
     const $number = $('.detailpart .numbox span');
-    const $colors = $('.detailpart .color .color_select p');
+    const $colors = $('.detailpart .color .color_select .xuxian').siblings('p');
+
     const $sizes = $('.detailpart .size .size_select p');
     let flag = null;
 

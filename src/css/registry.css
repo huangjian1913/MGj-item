@@ -88,7 +88,7 @@ li {
 }
 .registry_box form p span {
   display: block;
-  width: 340px;
+  width: 240px;
   font-size: 15px;
   position: relative;
   color: red;
@@ -101,6 +101,10 @@ li {
 .registry_box form p:last-of-type input {
   background: #f83559;
   border: none;
+  cursor: pointer;
+}
+.registry_box form p:last-of-type input:hover {
+  opacity: 0.7;
 }
 
 .footer {

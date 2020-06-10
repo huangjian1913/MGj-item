@@ -14,7 +14,7 @@
         // console.log(arr);
         $.each(arr, function(index, value) {
             strhtml += `  
-                <a href="detail.html" class="goods" target="_blank">
+                <a href="detail.html?sid=${value.sid}" class="goods" target="_blank">
                     <div class="box"><img class="lazy" data-original="${value.url}" alt="">
                     </div>
                     <p>${value.title}</p>

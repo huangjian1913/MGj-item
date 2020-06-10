@@ -368,6 +368,7 @@ li {
         width: 1200px;
         margin: 20px auto 0;
         nav {
+            display: none;
             li {
                 margin: 10px 0;
                 width: 1200px;
@@ -428,6 +429,7 @@ li {
         height: 45px;
         margin: 0 auto;
         background: #f6f6f6;
+        position: relative;
         p {
             float: left;
             line-height: 45px;
@@ -446,7 +448,7 @@ li {
             text-decoration: underline;
         }
         p:nth-of-type(5) {
-            margin-left: 492px;
+            margin-left: 430px;
             span {
                 color: #e4556d;
             }
@@ -458,13 +460,15 @@ li {
             font-weight: bold;
         }
         p:nth-of-type(7) {
-            margin-left: 25px;
             width: 150px;
             height: 100%;
             background: #999;
             text-align: center;
             font-size: 22px;
             color: white;
+            position: absolute;
+            right: 0;
+            top: 0;
         }
         p:nth-of-type(7):hover {
             opacity: 0.8;

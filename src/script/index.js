@@ -60,7 +60,7 @@ search.oninput = function() {
         const djs_second = document.querySelector(".countdown .second");
 
         setInterval(function() {
-            var futureTime = new Date(2020, 5, 8, 24, 0, 0); // 未来时间
+            var futureTime = new Date(2020, 5, 15, 24, 0, 0); // 未来时间
             var now = Date.now();
             var time = futureTime - now; // 需要倒计时的时间 毫秒
             var s = time / 1000; // 将毫秒转换成秒
@@ -69,9 +69,9 @@ search.oninput = function() {
             var min = Math.floor(s % 3600 / 60); // 计算分钟
             var sec = Math.floor(s % 60); // 获得秒
             // djs.innerHTML = '距离春节假期来临 还剩:' + day + '天' + hour + '时' + min + '分' + sec + '秒';
-            if (hour < 10) { hour = '0' + hour; }
-            if (min < 10) { min = '0' + min; }
-            if (sec < 10) { sec = '0' + sec; }
+            if (hour > 0 && hour < 10) { hour = '0' + hour; }
+            if (min > 0 && min < 10) { min = '0' + min; }
+            if (sec > 0 && sec < 10) { sec = '0' + sec; }
             djs_hour.innerHTML = hour;
             djs_min.innerHTML = min;
             djs_second.innerHTML = sec;

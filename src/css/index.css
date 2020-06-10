@@ -760,6 +760,7 @@ body {
 .girl_underwear .center_goods ul li a,
 .home_textiles .center_goods ul li a,
 .child_goods .center_goods ul li a {
+  color: black;
   margin-top: 10px;
   margin-bottom: -10px;
   width: 185px;
@@ -778,6 +779,7 @@ body {
 .girl_underwear .center_goods ul li a p,
 .home_textiles .center_goods ul li a p,
 .child_goods .center_goods ul li a p {
+  color: black;
   font-size: 13px;
   width: 180px;
   white-space: nowrap;

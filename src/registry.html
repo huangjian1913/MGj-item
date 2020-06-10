@@ -26,11 +26,11 @@
         <div class="big_bgbox">
             <div class="shade_box">
                 <div class="registry_box">
-                    <form action="" method="post">
-                        <p><label for="">用户姓名：</label><input type="text" name="username" class="username"><span>验证提示信息</span></p>
-                        <p><label for="">用户密码：</label><input type="password" name="password"></p>
-                        <p><label for="">确认密码：</label><input type="password" name="repass"></p>
-                        <p><label for="">用户邮箱：</label><input type="text" name="email"></p>
+                    <form action="http://10.31.162.38/Mogujie/php/registry.php" method="post">
+                        <p><label for="">用户姓名：</label><input type="text" name="username" class="username" autocomplete="off"><span></span></p>
+                        <p><label for="">用户密码：</label><input type="password" name="password" class="password"><span></span></p>
+                        <p><label for="">确认密码：</label><input type="password" name="repass" class="repass"><span></span></p>
+                        <p><label for="">用户邮箱：</label><input type="text" name="email" class="email" autocomplete="off"><span></span></p>
                         <p><input type="submit" value="用户注册" name="submit"></p>
                     </form>
 
@@ -59,6 +59,9 @@
 
     </div>
 
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./script/sha1.js"></script>
+    <script src="./script/registry.js"></script>
 </body>
 
 </html>
