@@ -26,14 +26,16 @@
     const $btn = $('form .submit');
     const $username = $('form .username');
     const $password = $('form .password');
+    const $captcha = $('form .captcha');
     $btn.on('click', function(ev) {
-        ev.preventDefault(); //阻止form表单里的提交按钮的默认行为
+        // ev.preventDefault(); //阻止form表单里的提交按钮的默认行为
         $.ajax({
             type: 'post',
             url: 'http://10.31.162.38/Mogujie/php/login.php',
             data: {
                 user: $username.val(),
-                pass: hex_sha1($password.val())
+                pass: hex_sha1($password.val()),
+                captcha: $captcha.val(),
             }
         }).done(function(result) {
             if (result) {
@@ -41,8 +43,9 @@
                 localStorage.setItem('username', $username.val());
             } else {
                 $password.val('');
-                alert('用户名或者密码错误');
+                alert('用户名或者密码或验证码错误');
             }
         });
+        return false;
     });
 }(jQuery);

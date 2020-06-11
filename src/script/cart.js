@@ -1,14 +1,15 @@
 ! function($) {
     const $itemlist = $('.cart_wrap .cart_list');
 
-    function showlist(sid, num, color, size) { //sid：编号  num：数量
+    function showlist(sid, num, color, size) {
         $.ajax({
             url: 'http://10.31.162.38/Mogujie/php/alldata.php',
             dataType: 'json'
         }).done(function(data) {
             $.each(data, function(index, value) {
                 if (sid == value.sid) {
-                    let $clonebox = $('.cart_wrap nav:hidden').clone(true, true); //克隆隐藏元素
+                    let $clonebox = $('.cart_wrap nav:hidden').clone(true, true);
+                    $clonebox.find(':checkbox').attr('checked', 'checked');
                     $clonebox.find('.pic').find('img').attr('src', value.url);
                     $clonebox.find('.pic').find('p').html(value.title);
                     $clonebox.find('.pic').find('img').attr('sid', value.sid);
@@ -21,17 +22,22 @@
                     $clonebox.find('.list_total').find('p').html((value.price * num).toFixed(2));
                     $clonebox.css('display', 'block');
                     $itemlist.append($clonebox);
-                    calcprice(); //计算总价
+                    calcprice();
                 }
             });
-
+            //用户体验 
+            if ($('.cart_wrap nav:visible').length > 0 && $('.cart_wrap nav:visible').find(':checkbox').length === $('.cart_wrap nav:visible').find('input:checked').size()) {
+                $('.allsel').prop('checked', true);
+            } else {
+                $('.allsel').prop('checked', false);
+            }
         });
     }
 
     //2.获取cookie渲染数据
     if ($.cookie('cookiesid') && $.cookie('cookienum') && $.cookie('cookiecolor') && $.cookie('cookiesize')) {
-        let arrsid = $.cookie('cookiesid').split(','); //获取cookie 同时转换成数组[1,2]
-        let arrnum = $.cookie('cookienum').split(','); //获取cookie 同时转换成数组[10,20]
+        let arrsid = $.cookie('cookiesid').split(',');
+        let arrnum = $.cookie('cookienum').split(',');
         let arrcolor = $.cookie('cookiecolor').split(',');
         let arrsize = $.cookie('cookiesize').split(',');
         $.each(arrsid, function(index, value) {
@@ -41,10 +47,10 @@
 
     //3.计算总价--使用次数很多--函数封装
     function calcprice() {
-        let $sum = 0; //商品的件数
-        let $count = 0; //商品的总价
+        let $sum = 0;
+        let $count = 0;
         $('.cart_wrap nav:visible').each(function(index, ele) {
-            if ($(ele).find('li input:eq(0)').prop('checked')) { //复选框勾选
+            if ($(ele).find('li input:eq(0)').prop('checked')) {
                 $sum += parseInt($(ele).find('li input:eq(1)').val());
                 $count += parseFloat($(ele).find('.list_total p').html());
             }
@@ -57,7 +63,7 @@
     $('.allsel').on('change', function() {
         $('.cart_wrap nav:visible').find(':checkbox').prop('checked', $(this).prop('checked'));
         $('.allsel').prop('checked', $(this).prop('checked'));
-        calcprice(); //计算总价
+        calcprice();
         if ($(this).prop('checked')) {
             $('.cart_footer p:eq(6)').css({
                 background: 'red',
@@ -72,15 +78,12 @@
     //事件委托
     let $inputs = $('.cart_wrap nav:visible').find(':checkbox');
     $('.cart_list').on('change', $inputs, function(ev) {
-        //$(this):被委托的元素，checkbox
         if ($('.cart_wrap nav:visible').find(':checkbox').length === $('.cart_wrap nav:visible').find('input:checked').size()) {
             $('.allsel').prop('checked', true);
         } else {
             $('.allsel').prop('checked', false);
         }
-        calcprice(); //计算总价
-        // console.log($('.cart_wrap nav:visible').find('input:checked').size() >= 1);
-        // console.log($('.cart_wrap nav:visible').find('input:checked').size() === 0);
+        calcprice();
         if ($('.cart_wrap nav:visible').find('input:checked').size() >= 1) {
             $('.cart_footer p:eq(6)').css({
                 background: 'red',
@@ -102,20 +105,20 @@
         }
         let $single_price = $evt.parents('li').find('.list_price').find('p').html()
         $evt.parents('li').find('.list_total').find('p').html(parseFloat($evt.val() * $single_price).toFixed(2));
-        calcprice(); //计算总价
+        calcprice();
         setcookie($evt);
     });
 
     //将改变后的数量存放到cookie中
-    let arrsid = []; //存储商品的编号。
-    let arrnum = []; //存储商品的数量。
+    let arrsid = [];
+    let arrnum = [];
     let arrcolor = [];
     let arrsize = [];
 
     function cookietoarray() {
         if ($.cookie('cookiesid') && $.cookie('cookienum')) {
-            arrsid = $.cookie('cookiesid').split(','); //获取cookie 同时转换成数组。
-            arrnum = $.cookie('cookienum').split(','); //获取cookie 同时转换成数组。
+            arrsid = $.cookie('cookiesid').split(',');
+            arrnum = $.cookie('cookienum').split(',');
             arrcolor = $.cookie('cookiecolor').split(',');
             arrsize = $.cookie('cookiesize').split(',');
         } else {
@@ -130,13 +133,13 @@
         cookietoarray();
         let $sid = obj.parents('li').find('img').attr('sid');
         arrnum[$.inArray($sid, arrsid)] = obj.parents('li').find('.list_num').find('input').val();
-        $.cookie('cookienum', arrnum, 10);
+        $.cookie('cookienum', arrnum, { expires: 10, path: '/' });
     }
 
 
     //6.删除
-    function delcookie(sid, arrsid) { //sid:当前删除的sid  arrsid:存放sid的数组
-        let $index = -1; //删除的索引位置
+    function delcookie(sid, arrsid) {
+        let $index = -1;
         $.each(arrsid, function(index, value) {
             if (sid === value) {
                 $index = index;
@@ -159,7 +162,10 @@
         if (window.confirm('你确定要删除吗?')) {
             $(this).parents('nav').remove();
             delcookie($(this).parents('li').find('img').attr('sid'), arrsid);
-            calcprice(); //计算总价
+            calcprice();
+        }
+        if ($('.cart_wrap nav:visible').length == 0) {
+            $('.allsel').prop('checked', false);
         }
     });
 
@@ -167,13 +173,17 @@
         cookietoarray();
         if (window.confirm('你确定要删除选中的吗?')) {
             $('nav:visible').each(function() {
-                if ($(this).find(':checkbox').is(':checked')) { //判断复选框是否选中
+                if ($(this).find(':checkbox').is(':checked')) {
                     $(this).remove();
                     delcookie($(this).find('img').attr('sid'), arrsid);
                 }
             });
-            calcprice(); //计算总价
+            calcprice();
+        }
+        if ($('.cart_wrap nav:visible').length == 0) {
+            $('.allsel').prop('checked', false);
         }
     });
+
 
 }(jQuery)

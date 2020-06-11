@@ -110,10 +110,6 @@ search.oninput = function() {
 }(jQuery)
 
 ! function($) {
-
-}(jQuery)
-
-! function($) {
     const $render1 = $('.body_wrap .outerbox .bannerbox ul li');
     const $render2 = $('.body_wrap .girl_close .bannerpic ul li');
     const $render3 = $('.girl_shoebag .right_goods .hot_goods a');
@@ -127,7 +123,6 @@ search.oninput = function() {
         async: false,
         success: function(data) {
             let arr = JSON.parse(data);
-            // console.log($render1.children());
             let strhtml1 = '';
             let strhtml2 = '';
             let strhtml3 = '';
@@ -135,14 +130,13 @@ search.oninput = function() {
             let strhtml5 = '';
             $.each(arr, function(index, value) {
                 if (index < 8) {
-                    // console.log($render1.eq(index).children().eq(2));
+
                     $render1.eq(index).children(0).children().attr('data-original', value.url);
                     $render1.eq(index).children().eq(1).html(value.title);
                     $render1.eq(index).children().eq(2).html('¥' + value.price);
                     $render1.eq(index).children().eq(3).html('¥' + value.oldprice);
                 }
                 if (index >= 8 && index < 16) {
-                    // console.log($render2.eq(index - 8));
                     $render2.eq(index - 8).html(`<div class="pic"><img class="lazy" data-original="${value.url}" alt=""></div>
                     <p>${value.title}</p>
                     <span class="span1">¥${value.price}</span>`);
@@ -211,7 +205,7 @@ search.oninput = function() {
             $render8.eq(5).html(strhtml1);
             $(function() { //和拼接的元素放在一起。
                 $("img.lazy").lazyload({
-                    effect: "fadeIn" //图片显示方式
+                    effect: "fadeIn"
                 });
             });
 
@@ -227,7 +221,7 @@ search.oninput = function() {
                 let $clonebox2 = $liboxs.eq(1).clone(true, true);
                 let $clonebox3 = $liboxs.eq(2).clone(true, true);
                 let $clonebox4 = $liboxs.eq(3).clone(true, true);
-                let $bannerwidth = $bannerbox.width(); //追加
+                let $bannerwidth = $bannerbox.width();
                 $ulbox.append($clonebox1).append($clonebox2).append($clonebox3).append($clonebox4).css({
                     width: $bannerwidth * 3
                 });

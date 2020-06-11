@@ -20,13 +20,13 @@
  * });
  */
 ;
-(function (factory) {
+(function(factory) {
     if (typeof define === "function" && (define.amd || define.cmd) && !jQuery) {
         // AMD或CMD
         define(["jquery"], factory);
     } else if (typeof module === 'object' && module.exports) {
         // Node/CommonJS
-        module.exports = function (root, jQuery) {
+        module.exports = function(root, jQuery) {
             if (jQuery === undefined) {
                 if (typeof window !== 'undefined') {
                     jQuery = require('jquery');
@@ -41,7 +41,7 @@
         //Browser globals
         factory(jQuery);
     }
-}(function ($) {
+}(function($) {
 
     //配置参数
     var defaults = {
@@ -65,10 +65,10 @@
         jumpIptCls: 'jump-ipt', //文本框内容
         jumpBtnCls: 'jump-btn', //跳转按钮
         jumpBtn: '跳转', //跳转按钮文本
-        callback: function () {} //回调
+        callback: function() {} //回调
     };
 
-    var Pagination = function (element, options) {
+    var Pagination = function(element, options) {
         //全局变量
         var opts = options, //配置
             current, //当前页
@@ -80,7 +80,7 @@
          * @param {int} page 页码
          * @return opts.pageCount 总页数配置
          */
-        this.setPageCount = function (page) {
+        this.setPageCount = function(page) {
             return opts.pageCount = page;
         };
 
@@ -89,7 +89,7 @@
          * 如果配置了总条数和每页显示条数，将会自动计算总页数并略过总页数配置，反之
          * @return {int} 总页数
          */
-        this.getPageCount = function () {
+        this.getPageCount = function() {
             return opts.totalData && opts.showData ? Math.ceil(parseInt(opts.totalData) / opts.showData) : opts.pageCount;
         };
 
@@ -97,7 +97,7 @@
          * 获取当前页
          * @return {int} 当前页码
          */
-        this.getCurrent = function () {
+        this.getCurrent = function() {
             return current;
         };
 
@@ -105,7 +105,7 @@
          * 填充数据
          * @param {int} 页码
          */
-        this.filling = function (index) {
+        this.filling = function(index) {
             var html = '';
             current = parseInt(index) || parseInt(opts.current); //当前页码
             var pageCount = this.getPageCount(); //获取的总页数
@@ -170,16 +170,16 @@
                     break;
                 default:
             }
-            html += opts.jump ? '<input type="text" class="' + opts.jumpIptCls + '"><a href="javascript:;" class="' + opts.jumpBtnCls + '">' + opts.jumpBtn + '</a>' : '';
+            html += opts.jump ? '<input type="text" class="input001" class="' + opts.jumpIptCls + '"><a href="javascript:;" class="' + opts.jumpBtnCls + '">' + opts.jumpBtn + '</a>' : '';
             $obj.empty().html(html);
         };
 
         //绑定事件
-        this.eventBind = function () {
+        this.eventBind = function() {
             var that = this;
             var pageCount = that.getPageCount(); //总页数
             var index = 1;
-            $obj.off().on('click', 'a', function () {
+            $obj.off().on('click', 'a', function() {
                 if ($(this).hasClass(opts.nextCls)) {
                     if ($obj.find('.' + opts.activeCls).text() >= pageCount) {
                         $(this).addClass('disabled');
@@ -207,7 +207,7 @@
                 typeof opts.callback === 'function' && opts.callback(that);
             });
             //输入跳转的页码
-            $obj.on('input propertychange', '.' + opts.jumpIptCls, function () {
+            $obj.on('input propertychange', '.' + opts.jumpIptCls, function() {
                 var $this = $(this);
                 var val = $this.val();
                 var reg = /[^\d]/g;
@@ -216,7 +216,7 @@
                 if (parseInt(val) === 0) $this.val(1); //最小值为1
             });
             //回车跳转指定页码
-            $document.keydown(function (e) {
+            $document.keydown(function(e) {
                 if (e.keyCode == 13 && $obj.find('.' + opts.jumpIptCls).val()) {
                     var index = parseInt($obj.find('.' + opts.jumpIptCls).val());
                     that.filling(index);
@@ -226,7 +226,7 @@
         };
 
         //初始化
-        this.init = function () {
+        this.init = function() {
             this.filling(opts.current);
             this.eventBind();
             if (opts.isHide && this.getPageCount() == '1' || this.getPageCount() == '0') {
@@ -238,16 +238,16 @@
         this.init();
     };
 
-    $.fn.pagination = function (parameter, callback) {
+    $.fn.pagination = function(parameter, callback) {
         if (typeof parameter == 'function') { //重载
             callback = parameter;
             parameter = {};
         } else {
             parameter = parameter || {};
-            callback = callback || function () {};
+            callback = callback || function() {};
         }
         var options = $.extend({}, defaults, parameter);
-        return this.each(function () {
+        return this.each(function() {
             var pagination = new Pagination(this, options);
             callback(pagination);
         });

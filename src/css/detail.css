@@ -5,10 +5,15 @@
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 li {
   list-style: none;
+}
+
+body {
+  background: #f8f5f5;
 }
 
 #common-nav {
@@ -19,7 +24,6 @@ li {
   right: 0;
   background: #202020;
 }
-
 #common-nav li {
   font-size: 14px;
   width: 100%;
@@ -31,20 +35,15 @@ li {
   cursor: pointer;
   letter-spacing: 2px;
 }
-
-#common-nav li a {
-  color: white;
-}
-
 #common-nav li:hover {
   background: #e4556d;
 }
-
 #common-nav li:first-of-type {
   height: 40px;
 }
-
 #common-nav li:last-of-type {
+  z-index: 999;
+  background: #202020;
   border-top: 1px white solid;
   position: absolute;
   bottom: 0;
@@ -54,28 +53,25 @@ li {
 .header {
   width: 100%;
   clear: both;
+  background: white;
 }
-
-.header-nav {
+.header .header-nav {
   height: 33px;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
   margin: 0 auto;
 }
-
-.header-nav-wrap {
+.header .header-nav .header-nav-wrap {
   width: 1200px;
   height: 100%;
   margin: 0 auto;
 }
-
-.header-nav-content {
+.header .header-nav .header-nav-wrap .header-nav-content {
   float: right;
   line-height: 33px;
   position: relative;
 }
-
-.header-nav-content a {
+.header .header-nav .header-nav-wrap .header-nav-content a {
   font: 12px/1.6 tahoma, arial, sans-serif;
   font-weight: 300;
   margin: 0 10px;
@@ -84,84 +80,71 @@ li {
   cursor: pointer;
   color: #999;
 }
-
-.header-nav-content a span {
+.header .header-nav .header-nav-wrap .header-nav-content a span {
   color: #ffb7c4;
   font-size: 12px;
 }
-
-.header-nav-content a:last-of-type {
+.header .header-nav .header-nav-wrap .header-nav-content a:last-of-type {
   position: relative;
   margin-right: 0;
   border-right: none;
   padding-right: 0;
 }
-
-.header-nav-content .header-abouts-box {
+.header .header-nav .header-nav-wrap .header-nav-content .header-abouts-box {
   position: absolute;
-  top: 30px;
+  top: 25px;
   right: -159px;
   width: 960px;
   height: 500px;
-  background: yellow;
+  background: orange;
   display: none;
+  z-index: 999;
 }
-
-.header-wrap {
+.header .header-wrap {
   width: 1200px;
   height: 100px;
   margin: 0 auto;
 }
-
-.header-wrap .tubiao img {
+.header .header-wrap .tubiao img {
   width: 130px;
   height: 100px;
   float: left;
 }
-
-.header-wrap .mulu {
+.header .header-wrap .mulu {
   float: left;
   padding-left: 32px;
   padding-top: 40px;
   position: relative;
   cursor: pointer;
 }
-
-.header-wrap .mulu-list {
+.header .header-wrap .mulu .mulu-list {
   position: absolute;
-  top: 80px;
+  top: 59px;
   left: -230px;
-  width: 100px;
+  width: 1000px;
   height: 300px;
   background: lightgoldenrodyellow;
   display: none;
+  z-index: 999;
 }
-
-.header-wrap .search-nav {
+.header .header-wrap .search-nav {
   float: left;
   margin-left: 90px;
 }
-
-.header-wrap .search-nav ul li a {
-  color: black;
-}
-
-.header-wrap .search-content {
+.header .header-wrap .search-nav .search-content {
   height: 44px;
   margin-top: 30px;
   border-radius: 8px;
 }
-
-.header-wrap .search-content .search {
+.header .header-wrap .search-nav .search-content .search {
   float: left;
   background: #f7f7f7;
+  position: relative;
 }
-
-.header-wrap .search-content form {
+.header .header-wrap .search-nav .search-content .search form {
   margin-left: 20px;
 }
-
-.header-wrap .search-content input {
+.header .header-wrap .search-nav .search-content .search form input {
   margin-top: 10px;
   width: 450px;
   height: 25px;
@@ -169,8 +152,7 @@ li {
   border: none;
   background: #f7f7f7;
 }
-
-.header-wrap .search-content form .submit-btn {
+.header .header-wrap .search-nav .search-content .search form .submit-btn {
   float: right;
   width: 60px;
   height: 44px;
@@ -178,47 +160,56 @@ li {
   border-radius: 0 8px 8px 0;
   cursor: pointer;
 }
-
-.header-wrap .search-content .submit-btn span {
+.header .header-wrap .search-nav .search-content .search form .submit-btn span {
   font-size: 35px;
   margin-left: 10px;
   line-height: 44px;
   color: white;
 }
-
-.header-wrap .search-content ul {
+.header .header-wrap .search-nav .search-content .search .search_box {
+  width: 470px;
+  box-sizing: border-box;
+  background: white;
+  border: 1px solid #dbdbdb;
+  position: absolute;
+  top: 43px;
+  z-index: 998;
+}
+.header .header-wrap .search-nav .search-content .search .search_box > li {
+  font-size: 15px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+.header .header-wrap .search-nav .search-content .search .search_box > li a {
+  color: black;
+}
+.header .header-wrap .search-nav .search-content ul {
   float: left;
 }
-
-.header-wrap .search-content ul li {
-  /* width: 35px; */
+.header .header-wrap .search-nav .search-content ul li {
   height: 44px;
   margin: 0 12px;
   float: left;
   cursor: pointer;
 }
-
-.header-wrap .search-content ul li span {
+.header .header-wrap .search-nav .search-content ul li span {
   font-size: 28px;
 }
-
-.header-wrap .search-content ul li p {
+.header .header-wrap .search-nav .search-content ul li p {
   font-size: 12px;
 }
-
-.header-wrap .login {
+.header .header-wrap .search-nav .search-content .login {
   float: left;
   margin-left: 65px;
 }
-
-.header-wrap .login img {
+.header .header-wrap .search-nav .search-content .login img {
   margin-top: 8px;
   float: left;
   width: 30px;
   height: 30px;
 }
-
-.header-wrap .login p {
+.header .header-wrap .search-nav .search-content .login p {
+  color: black;
   padding-top: 12px;
   margin-left: 5px;
   font-size: 15px;
@@ -341,6 +332,29 @@ li {
 .detailpart .detailbox .detail_left .bigpicbox img {
   width: 100%;
   height: 100%;
+}
+.detailpart .detailbox .detail_left .bigpicbox .zoom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #e4556d;
+  opacity: 0.7;
+  display: none;
+}
+.detailpart .detailbox .detail_left .zoombox {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 400px;
+  width: 500px;
+  height: 500px;
+  z-index: 999;
+  overflow: hidden;
+}
+.detailpart .detailbox .detail_left .zoombox img {
+  position: absolute;
+  width: 600px;
+  height: 900px;
 }
 .detailpart .detailbox .detail_left .smallpicbox {
   position: absolute;

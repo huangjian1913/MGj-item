@@ -1,0 +1,101 @@
+@charset "utf-8";
+$center_width:1200px;
+.footer {
+    width: 100%;
+    margin-top: 80px;
+    background: #ff5ba0;
+    .contentbox {
+        width: $center_width;
+        height: 488px;
+        background-image: url(https://s10.mogucdn.com/mlcdn/c45406/181031_40flk9d5hkkjf44246248clfl77f1_1440x500.jpg);
+        margin: 0 auto;
+        position: relative;
+        .brand {
+            position: absolute;
+            top: 50px;
+            left: 515px;
+            width: 170px;
+            height: 50px;
+            margin: 0 auto;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .content {
+            position: absolute;
+            top: 100px;
+            width: 100%;
+            height: 200px;
+            margin-top: 40px;
+            .top {
+                display: flex;
+                justify-content: flex-start;
+                p {
+                    padding-left: 30px;
+                    width: 270px;
+                    font-size: 15px;
+                    color: white;
+                }
+            }
+            .xian {
+                width: 100%;
+                p {
+                    float: left;
+                    margin: 5px 240px 5px 30px;
+                    width: 30px;
+                    height: 1px;
+                    background: white;
+                }
+            }
+            .items01 {
+                width: 100%;
+                margin-top: 35px;
+                li {
+                    float: left;
+                    width: 300px;
+                    height: 150px;
+                    p {
+                        height: 34px;
+                        margin-left: 30px;
+                        font-size: 13px;
+                        color: white;
+                    }
+                    p:hover {
+                        color: orange;
+                    }
+                }
+            }
+            .items02 {
+                margin-left: 90px;
+                width: 100%;
+                margin-top: 25px;
+                li {
+                    float: left;
+                    padding: 0 20px;
+                    border-right: 1px solid white;
+                    font-size: 13px;
+                    color: white;
+                }
+                li:hover {
+                    color: orange;
+                }
+                li:last-of-type {
+                    border-right: none;
+                    ;
+                }
+            }
+        }
+        .bottom {
+            position: absolute;
+            top: 370px;
+            width: 100%;
+            p {
+                font-size: 13px;
+                color: white;
+                margin: 15px 0;
+                text-align: center;
+            }
+        }
+    }
+}

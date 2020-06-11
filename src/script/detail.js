@@ -1,22 +1,8 @@
 ! function() {
-    const bigpics = document.querySelectorAll('.detailpart .detail_left .bigpicbox');
-    const smallpics = document.querySelectorAll('.detailpart .detail_left .smallbox');
-    for (let i = 0; i < smallpics.length; i++) {
-        smallpics[i].onmousemove = function() {
-            for (let j = 0; j < bigpics.length; j++) {
-                bigpics[j].style.display = "none";
-            }
-            bigpics[i].style.display = "block";
-        }
-    }
-}()
-
-! function() {
     let id = location.search.substring(1).split('=')[1];
-    const bigpics = document.querySelectorAll('.detailpart .detail_left .bigpicbox img');
+    const bigpic = document.querySelector('.detailpart .detail_left .bigpicbox img');
     const smallpics = document.querySelectorAll('.detailpart .detail_left .smallbox img');
-    // const colors = document.querySelectorAll('.detailpart .color .color_select p');
-    // const sizes = document.querySelectorAll('.detailpart .size .size_select p');
+    const zoompic = document.querySelector('.detailpart .detail_left .zoombox img');
     const number = document.querySelector('.detailpart .numbox span');
     const cartbtn = document.querySelector('.detailpart .detail_mid .addcart .add');
     const storepic = document.querySelector('.storepic .bigpic img');
@@ -33,21 +19,24 @@
         }
     }).then(function(data) {
         let obj = JSON.parse(data);
-        bigpics[0].src = obj.url1;
+        bigpic.src = obj.url;
+        zoompic.src = bigpic.src;
         smallpics[0].src = obj.url1;
-        bigpics[1].src = obj.url2;
         smallpics[1].src = obj.url2;
-        bigpics[2].src = obj.url3;
         smallpics[2].src = obj.url3;
-        bigpics[3].src = obj.url4;
         smallpics[3].src = obj.url4;
-        bigpics[4].src = obj.url;
         smallpics[4].src = obj.url;
         title.innerHTML = obj.title;
         oldprice.innerHTML = '¥' + obj.oldprice;
         price.innerHTML = '¥' + obj.price;
         sailnum.innerHTML = obj.sailnumber;
         storepic.src = obj.piclisturl;
+        for (let i = 0; i < smallpics.length; i++) {
+            smallpics[i].onmousemove = function() {
+                bigpic.src = this.src;
+                zoompic.src = bigpic.src;
+            }
+        }
     })
     let arrsid = [];
     let arrnum = [];
@@ -56,7 +45,7 @@
 
     function cookievalue() {
         if (cookie.get('cookiesid') && cookie.get('cookienum') && cookie.get('cookiecolor') && cookie.get('cookiesize')) {
-            arrsid = cookie.get('cookiesid').split(','); //获取的cookie变成数组
+            arrsid = cookie.get('cookiesid').split(',');
             arrnum = cookie.get('cookienum').split(',');
             arrcolor = cookie.get('cookiecolor').split(',');
             arrsize = cookie.get('cookiesize').split(',');
@@ -76,14 +65,12 @@
             cookievalue();
 
             //获取当前商品的id
-            if (arrsid.indexOf(id) !== -1 && arrcolor[arrsid.indexOf(id)] === color.innerHTML && arrsize[arrsid.indexOf(id)] === size.innerHTML) { //存在，不是第一次
-                //arrnum[arrsid.indexOf(id)] //通过id找对应的数量
-                //存在的数量+当前新加的数量
+            if (arrsid.indexOf(id) !== -1 && arrcolor[arrsid.indexOf(id)] === color.innerHTML && arrsize[arrsid.indexOf(id)] === size.innerHTML) {
                 let num = parseInt(arrnum[arrsid.indexOf(id)]) + parseInt(number.innerHTML);
                 arrnum[arrsid.indexOf(id)] = num;
                 cookie.set('cookienum', arrnum, 10);
 
-            } else { //第一次添加商品
+            } else {
                 arrsid.push(id);
                 let num = parseInt(number.innerHTML);
                 arrnum.push(num);
@@ -94,19 +81,14 @@
                 cookie.set('cookiecolor', arrcolor, 10);
                 cookie.set('cookiesize', arrsize, 10);
             }
-            alert('商品已经加入购物车了');
+            alert('商品成功加入购物车');
         }
     })
 }()
 
 ! function() {
-    const $cartbtn = $('.detailpart .detail_mid .addcart .add');
-    const $number = $('.detailpart .numbox span');
     const $colors = $('.detailpart .color .color_select .xuxian').siblings('p');
-
     const $sizes = $('.detailpart .size .size_select p');
-    let flag = null;
-
     $colors.on('click', function() {
         if ($(this).hasClass('active')) {
             $(this).removeClass('active')
@@ -134,34 +116,37 @@
         number.innerHTML = parseInt(number.innerHTML) + 1;
     }
     minus.onclick = function() {
-            if (parseInt(number.innerHTML) <= 1) {
-                number.innerHTML = 1;
-            } else {
-                number.innerHTML = parseInt(number.innerHTML) - 1;
-            }
+        if (parseInt(number.innerHTML) <= 1) {
+            number.innerHTML = 1;
+        } else {
+            number.innerHTML = parseInt(number.innerHTML) - 1;
         }
-        // flag = true;
+    }
+    let flag = null;
     cartbtn.addEventListener('click', function(e) {
         if ($colors.hasClass('active') && $sizes.hasClass('active')) {
             flag = true;
-        } else if ($colors.hasClass('active') == false || $sizes.hasClass('active') == false) {
+        } else {
             flag = false;
         }
-
-        // 1、鼠标坐标；2、购物车终点坐标；3、最高点坐标（自己定）
-        e = e || window.event
-        var x1 = e.clientX,
-            y1 = e.clientY + scrollY,
-            x2 = shopcart.offsetLeft,
-            y2 = shopcart.offsetTop,
-            x3 = x2 - 400,
-            y3 = y2 - 400
-            // 根据数学公式计算抛物线三个系数（这里不用管，拿来用就行）
-        var a = -((y2 - y3) * x1 - (x2 - x3) * y1 + x2 * y3 - x3 * y2) / ((x2 - x3) * (x1 - x2) * (x1 - x3));
-        var b = ((y2 - y3) * x1 * x1 + x2 * x2 * y3 - x3 * x3 * y2 - (x2 * x2 - x3 * x3) * y1) / ((x2 - x3) * (x1 - x2) * (x1 - x3));
-        var c = ((x2 * y3 - x3 * y2) * x1 * x1 - (x2 * x2 * y3 - x3 * x3 * y2) * x1 + (x2 * x2 * x3 - x2 * x3 * x3) * y1) / ((x2 - x3) * (x1 - x2) * (x1 - x3));
+        // } else if ($colors.hasClass('active') == false || $sizes.hasClass('active') == false) {
+        //     flag = false;
+        // }
         if (flag) {
-            flag = false;
+            // 1、鼠标坐标；2、购物车终点坐标；3、最高点坐标（自己定）
+            e = e || window.event
+            var x1 = e.clientX,
+                y1 = e.clientY + scrollY,
+                x2 = shopcart.offsetLeft,
+                y2 = shopcart.offsetTop,
+                x3 = x2 - 400,
+                y3 = y2 - 400;
+            // 根据数学公式计算抛物线三个系数（这里不用管，拿来用就行）
+            var a = -((y2 - y3) * x1 - (x2 - x3) * y1 + x2 * y3 - x3 * y2) / ((x2 - x3) * (x1 - x2) * (x1 - x3));
+            var b = ((y2 - y3) * x1 * x1 + x2 * x2 * y3 - x3 * x3 * y2 - (x2 * x2 - x3 * x3) * y1) / ((x2 - x3) * (x1 - x2) * (x1 - x3));
+            var c = ((x2 * y3 - x3 * y2) * x1 * x1 - (x2 * x2 * y3 - x3 * x3 * y2) * x1 + (x2 * x2 * x3 - x2 * x3 * x3) * y1) / ((x2 - x3) * (x1 - x2) * (x1 - x3));
+
+
             // 创建一个div，添加到页面上
             var div = document.createElement('div')
             div.className = 'cart_active';
@@ -185,9 +170,52 @@
                     div.remove()
                         //购物车数量++
                         // number.innerHTML = Number(shopNum.innerHTML) + 1
-                    flag = true;
                 }
             }, 60)
         }
     }, true)
 }()
+
+! function($) {
+    const $scale = $('.detailpart .detail_left');
+    const $bigpicbox = $('.detailpart .detail_left .bigpicbox');
+    const $zoom = $('.detailpart .detail_left .bigpicbox .zoom');
+    const $bigpic = $('.detailpart .detail_left .bigpicbox img');
+    const $zoombox = $('.detailpart .detail_left .zoombox');
+    const $zoompic = $('.detailpart .detail_left .zoombox img');
+    $bigpicbox.hover(function() {
+        $zoom.css('display', 'block');
+        $zoombox.css('display', 'block');
+        $zoom.css({
+            width: $bigpicbox.outerWidth() * $zoombox.outerWidth() / $zoompic.outerWidth(),
+            height: $bigpicbox.outerHeight() * $zoombox.outerHeight() / $zoompic.outerHeight()
+        });
+        let $bili = $zoompic.outerWidth() / $bigpicbox.outerWidth();
+        $(this).on('mousemove', function(e) {
+            let leftvalue = e.pageX - $scale.offset().left - $zoom.outerWidth() / 2;
+            let topvalue = e.pageY - $scale.offset().top - $zoom.outerHeight() / 2;
+            if (leftvalue < 0) {
+                leftvalue = 0
+            } else if (leftvalue >= $bigpicbox.outerWidth() - $zoom.outerWidth()) {
+                leftvalue = $bigpicbox.outerWidth() - $zoom.outerWidth();
+            }
+
+            if (topvalue < 0) {
+                topvalue = 0
+            } else if (topvalue >= $bigpicbox.outerHeight() - $zoom.outerHeight()) {
+                topvalue = $bigpicbox.outerHeight() - $zoom.outerHeight();
+            }
+            $zoom.css({
+                left: leftvalue,
+                top: topvalue
+            });
+            $zoompic.css({
+                left: -$bili * leftvalue,
+                top: -$bili * topvalue
+            });
+        });
+    }, function() {
+        $zoom.css('display', 'none');
+        $zoombox.css('display', 'none');
+    });
+}(jQuery)

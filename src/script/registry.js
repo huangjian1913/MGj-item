@@ -6,8 +6,8 @@
     const $email = $('.email');
     const $span = $('.registry_box form p span');
 
-    //每一个表单一个标记。
-    let userflag = true; //标记
+
+    let userflag = true;
     let passflag = true;
     let repassflag = true;
     let emailflag = true;
@@ -20,8 +20,8 @@
     });
 
     $username.on('blur', function() {
-        if ($(this).val() !== '') { //有值
-            let len = $(this).val().replace(/[\u4e00-\u9fa5]/g, 'aa').length; //将中文转换成两个英文计算长度
+        if ($(this).val() !== '') {
+            let len = $(this).val().replace(/[\u4e00-\u9fa5]/g, 'aa').length;
             if (len < 14) {
                 $.ajax({
                     type: 'post',
@@ -30,12 +30,12 @@
                         username: $username.val()
                     }
                 }).done(function(result) {
-                    if (!result) { //不存在
+                    if (!result) {
                         $span.eq(0).html('该用户名可用').css('color', 'green');
-                        $userflag = true;
+                        userflag = true;
                     } else {
                         $span.eq(0).html('该用户名已经存在').css('color', 'red');
-                        $userflag = false;
+                        userflag = false;
                     }
                 })
             } else {
@@ -65,10 +65,8 @@
             let regnum = /\d+/;
             let regupper = /[A-Z]+/;
             let reglower = /[a-z]+/;
-            let regother = /[\W\_]+/; //其他字符
-
-            //test():匹配存在感
-            let $count = 0; //计数
+            let regother = /[\W\_]+/;
+            let $count = 0;
 
             if (regnum.test($pass)) {
                 $count++;
